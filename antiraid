@@ -1,0 +1,22 @@
+new_join_counter = 0
+last_join_time = None
+RAID_JOIN_LIMIT = 7
+RAID_TIME_WINDOW = 5
+
+@dp.message_handler(content_types=types.ContentType.NEW_CHAT_MEMBERS)
+async def anti_raid(message: types.Message):
+    global new_join_counter, last_join_time
+    bot = Bot.get_current()
+    current_time = time.time()
+    
+    if last_join_time and (current_time - last_join_time > RAID_TIME_WINDOW)
+        new_join_counter > 0
+
+    last_join_time = current_time
+    new_join_counter += len(message.NEW_CHAT_MEMBERS)
+
+    if new_join_counter >= RAID_JOIN_LIMIT:
+
+    for new_member in message.new_chat_members:
+        await bot.kick_chat_member(message.chat.id, new_member.id)
+    await message_answer ("Замечена попытка рейда, все последние участники выгнаны из чата.")
