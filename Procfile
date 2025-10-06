@@ -1,0 +1,1 @@
+worker: python -c "import os, asyncio; from aiogram import Bot, Dispatcher; from dotenv import load_dotenv; load_dotenv('doc.env'); bot = Bot(token=os.getenv('BOT_TOKEN')); dp = Dispatcher(bot); import antiraid; import antispam; async def main(): await dp.start_polling(); asyncio.run(main())"
