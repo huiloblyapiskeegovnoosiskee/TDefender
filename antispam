@@ -1,0 +1,23 @@
+from collections import defaultdict
+import time
+
+user_message_times = defaultdict()
+FLUD_LIMIT = 10
+TIME_WINDOW = 15
+
+@dp.message_handler()
+async def anti_flood(message: types.Message):
+   user_id = message.from_user.id
+   current_time = time.time()
+
+   user_message_times[user_id] = [t for t user_message_times[user id] if current_time - t < TIME_WINDOW]
+
+   user_message_id[user_id].append(current_time)
+
+   if len (user_message_times[user_id]) > FLUD_LIMIT:
+      bot = Bot.get_current()
+      await bot_delete_message(message.chat.id, message.message.id)
+
+      until_date = int(time.time() + 2400:
+      await bot_restrict_chat_member(message.chat.id, user_id, until_date=until_date, can_send_messages=False)
+      await.message.answer(f"Пользователь {message.from_user.first_name} заблокирован на 40 минут за спам.)
